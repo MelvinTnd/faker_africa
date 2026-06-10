@@ -1,14 +1,87 @@
 # Faker Africa 🇧🇯🇹🇬🇨🇮🇸🇳
 
-**Generate realistic African fake data for PHP, Laravel and testing environments.**
+**The first African-focused fake data generator for PHP & Laravel.**
 
-Faker Africa is a PHP library that extends FakerPHP with realistic African datasets starting with the **Bénin**, and designed to expand across Africa (Togo, Côte d'Ivoire, Sénégal, and more).
+Faker Africa is a PHP library that extends FakerPHP with realistic African datasets — starting with **Bénin**, and expanding across Africa (Togo, Côte d'Ivoire, Sénégal, and more).
 
 It helps developers build and test applications with **realistic local data instead of generic Western data**.
 
 ---
 
-# ✨ Features (v0.1 - Bénin)
+## 📦 Installation
+
+```bash
+composer require faker-africa/faker-africa:^0.1
+```
+
+---
+
+## 🚀 Usage
+
+```php
+use Faker\Factory;
+use FakerAfrica\Providers\BeninProvider;
+
+$faker = Factory::create();
+$faker->addProvider(new BeninProvider($faker));
+
+// Generate data
+echo $faker->beninFullName();   // Ahouansou Rodrigue
+echo $faker->beninCity();       // Cotonou
+echo $faker->mtnNumber();       // +229 01 97 45 23 18
+echo $faker->xofAmount();       // 125000 XOF
+```
+
+---
+
+## 🏗️ Laravel Setup
+
+```php
+use Faker\Factory;
+use FakerAfrica\Providers\BeninProvider;
+
+$faker = Factory::create();
+$faker->addProvider(
+    new FakerAfrica\Providers\BeninProvider($faker)
+);
+```
+
+Auto-discovery is supported — no manual registration needed in Laravel.
+
+---
+
+## 🌍 Real World Example — Laravel Factory
+
+```php
+use Faker\Factory;
+use FakerAfrica\Providers\BeninProvider;
+
+$faker = Factory::create();
+$faker->addProvider(new BeninProvider($faker));
+
+// Example: user seeding
+User::factory()->create([
+    'name'    => $faker->beninFullName(),
+    'phone'   => $faker->mtnNumber(),
+    'city'    => $faker->beninCity(),
+    'balance' => $faker->xofAmount(),
+]);
+```
+
+---
+
+## 📌 Example Output
+
+```text
+Ahouansou Rodrigue
+Cotonou
++229 01 97 45 23 18
+125000 XOF
+```
+
+---
+
+## ✨ Features (v0.1 — Bénin)
 
 * 🇧🇯 Benin realistic names (first & last names)
 * 🏙️ Benin cities and departments
@@ -20,45 +93,7 @@ It helps developers build and test applications with **realistic local data inst
 
 ---
 
-# 📦 Installation
-
-```bash
-composer require faker-africa/faker-africa
-```
-
----
-
-# 🚀 Usage
-
-```php
-use Faker\Factory;
-use FakerAfrica\Providers\BeninProvider;
-
-$faker = Factory::create();
-
-// Add Benin provider
-$faker->addProvider(new BeninProvider($faker));
-
-// Generate data
-echo $faker->beninFullName();
-echo $faker->beninCity();
-echo $faker->mtnNumber();
-```
-
----
-
-# 📌 Example Output
-
-```text
-Ahouansou Rodrigue
-Cotonou
-+229 01 97 45 23 18
-125000 XOF
-```
-
----
-
-# 🏗️ Project Structure
+## 🏗️ Project Structure
 
 ```text
 src/
@@ -75,24 +110,20 @@ data/
 
 ---
 
-# 🌍 Roadmap
+## 🌍 Roadmap
 
-## v0.1 (current)
-
+### v0.1 (current)
 * 🇧🇯 Bénin support
 
-## v0.2
-
+### v0.2
 * 🇹🇬 Togo support
 * 🇨🇮 Côte d'Ivoire support
 
-## v0.3
-
+### v0.3
 * 🇸🇳 Sénégal support
 * Mobile Money improvements
 
-## v1.0
-
+### v1.0
 * 🇨🇲 Cameroun
 * 🇳🇬 Nigeria
 * 🇬🇭 Ghana
@@ -100,7 +131,7 @@ data/
 
 ---
 
-# 🤝 Contributing
+## 🤝 Contributing
 
 Contributions are welcome!
 
@@ -116,7 +147,7 @@ Please open a Pull Request or Issue.
 
 ---
 
-# 🎯 Why Faker Africa?
+## 🎯 Why Faker Africa?
 
 Most fake data libraries are designed for Western countries.
 
@@ -137,7 +168,8 @@ Making it perfect for:
 
 ---
 
-# 📄 License
+## 📄 License
 
 MIT License © Faker Africa Contributors
-Thanks to FakerPHP for the base library
+
+Built on top of [FakerPHP](https://fakerphp.org/).
