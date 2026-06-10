@@ -140,3 +140,4 @@ Making it perfect for:
 # 📄 License
 
 MIT License © Faker Africa Contributors
+Thanks to FakerPHP for the base library
